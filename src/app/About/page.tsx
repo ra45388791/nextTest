@@ -1,20 +1,17 @@
 'use client'
-import React, { useState, useReducer } from 'react';
-import Section from './Section';
+import React, { useReducer, useRef } from 'react';
 import { countContext } from '@/DataContext';
+import Section from './Section';
+import Count from './Count';
 
 
 
 export default function About() {
 
-    // const [count, setCount] = useState(0);
     const count = 0
     const [state, dispatch] = useReducer(reducerFunc, count);
+    const getERef = useRef(null);
 
-    function addCount() {
-        // let c = count;
-        // setCount(c += 1)
-    }
 
     function reducerFunc(state: number, action: { type: string }) {
         let c = state;
@@ -28,6 +25,11 @@ export default function About() {
         }
     }
 
+    function showMSG() {
+        console.log(getERef);
+        console.log(getERef.current);
+    }
+
 
     return (
         <countContext.Provider value={{ state: state, dispatch: dispatch }}>
@@ -37,8 +39,12 @@ export default function About() {
                 </p>
                 {/* <button onClick={addCount}>+1按鈕</button> */}
             </div>
+
             <div>
-                <Section />
+                <Section ref={getERef}>
+                    <Count />
+                </Section>
+                <button onClick={showMSG}>showMSG</button>
             </div>
         </countContext.Provider>
     )
