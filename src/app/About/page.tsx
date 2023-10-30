@@ -33,19 +33,25 @@ export default function About() {
 
     return (
         <countContext.Provider value={{ state: state, dispatch: dispatch }}>
-            <div>
-                <p>
-                    {state}
-                </p>
-                {/* <button onClick={addCount}>+1按鈕</button> */}
-            </div>
+            <>
+                <div>
+                    <p>
+                        {state}
+                    </p>
+                    {/* <button onClick={addCount}>+1按鈕</button> */}
+                </div>
 
-            <div>
-                <Section ref={getERef}>
-                    <Count />
-                </Section>
-                <button onClick={showMSG}>showMSG</button>
-            </div>
+                <div>
+                    <Section ref={getERef}>
+                        <Count />
+                    </Section>
+                    <button onClick={showMSG}>showMSG</button>
+                </div>
+                <div className='h-96'>123</div>
+                <div className='h-96'>456</div>
+                <div className='h-96'>123</div>
+                <div className='h-96'>456</div>
+            </>
         </countContext.Provider>
     )
 }
