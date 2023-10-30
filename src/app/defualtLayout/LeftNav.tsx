@@ -1,11 +1,12 @@
 "use client"
 //組件庫
-import { Client as Styletron } from 'styletron-engine-atomic';
-import { Provider as StyletronProvider } from 'styletron-react';
-import { Menu, TriangleRight } from "baseui/icon";
+// import { Client as Styletron } from 'styletron-engine-atomic';
+// import { Provider as StyletronProvider } from 'styletron-react';
+// import { Menu, TriangleRight } from "baseui/icon";
 //圖片
 import Image from 'next/image'
 import memoImg from '../../../public/memo.svg'
+import nav from '../../../public/nav.svg'
 //自訂模板
 import LeftNavLink from "./LeftNavLink"
 import { useEffect, useState } from 'react';
@@ -15,9 +16,6 @@ interface menuButton {
     shadowClass: string,
     shadowStyle: {}
 }
-//圖示組件庫
-const engine = new Styletron();
-
 
 //開啟菜單
 const open = {
@@ -65,27 +63,25 @@ export default function LeftNav() {
     }
 
     return (
-        <StyletronProvider value={engine}>
-            <div className={'relative h-screen ' + menu}>
-                <div className={layout_Defualt + menu_Layout}>
-                    <div className={buttonList_Defualt + buttonList}>
-                        <LeftNavLink type="Button" payload={openMenu} status={menuIsOpen} text="">
-                            <Menu size={33}></Menu>
-                        </LeftNavLink>
-                    </div>
+        <div className={'relative h-screen ' + menu}>
+            <div className={layout_Defualt + menu_Layout}>
+                <div className={buttonList_Defualt + buttonList}>
+                    <LeftNavLink type="Button" payload={openMenu} status={menuIsOpen} text="">
+                        <Image src={nav} width={30} height={30} alt="note.png"></Image>
+                    </LeftNavLink>
+                </div>
 
-                    <div className='my-2 w-10/12 border-b-2 border-zinc-700' />
+                <div className='my-2 w-10/12 border-b-2 border-zinc-700' />
 
-                    <div className={buttonList_Defualt + buttonList}>
-                        <LeftNavLink type="Link" status={menuIsOpen} payload="/About" text="關於" >
-                            <Image src={memoImg} width={30} height={30} alt="note.png"></Image>
-                        </LeftNavLink>
-                        <LeftNavLink type="Link" status={menuIsOpen} payload="/Learn" text="學習">
-                            <TriangleRight size={30} />
-                        </LeftNavLink>
-                    </div>
+                <div className={buttonList_Defualt + buttonList}>
+                    <LeftNavLink type="Link" status={menuIsOpen} payload="/About" text="關於" >
+                        <Image src={memoImg} width={30} height={30} alt="note.png"></Image>
+                    </LeftNavLink>
+                    <LeftNavLink type="Link" status={menuIsOpen} payload="/Learn" text="學習">
+                        <Image src={memoImg} width={30} height={30} alt="note.png"></Image>
+                    </LeftNavLink>
                 </div>
             </div>
-        </StyletronProvider>
+        </div>
     )
 }
