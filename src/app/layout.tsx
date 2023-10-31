@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { Providers } from './providers'
 import LeftNav from './defualtLayout/LeftNav'
 
 const inter = Inter({ subsets: ['latin'] })
-const bodyStyle = ` `
+const leftDistance = 20;
+const childrenClass = ` w-full ${' ms-' + leftDistance} ps-4 `
 
 export const metadata: Metadata = {
 	title: 'this is a Next App',
@@ -13,12 +15,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children, }: { children: React.ReactNode }) {
 	return (
-		<html lang="en">
+		<html lang="en" className='dark'>
 			<body className={inter.className + ` flex flex-nowrap `}>
-				<LeftNav />
-				<div className='w-full ms-20 ps-4 '>
-					{children}
-				</div>
+				<Providers>
+					<LeftNav leftDistance={leftDistance} />
+					<div className={childrenClass}>
+						{children}
+					</div>
+				</Providers>
 			</body>
 		</html>
 	)

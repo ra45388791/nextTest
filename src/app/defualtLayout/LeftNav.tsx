@@ -1,8 +1,4 @@
-"use client"
-//組件庫
-// import { Client as Styletron } from 'styletron-engine-atomic';
-// import { Provider as StyletronProvider } from 'styletron-react';
-// import { Menu, TriangleRight } from "baseui/icon";
+'use client'
 //圖片
 import Image from 'next/image'
 import memoImg from '../../../public/memo.svg'
@@ -11,22 +7,18 @@ import nav from '../../../public/nav.svg'
 import LeftNavLink from "./LeftNavLink"
 import { useEffect, useState } from 'react';
 
-interface menuButton {
-    className: string,
-    shadowClass: string,
-    shadowStyle: {}
-}
+import { Button as NextButton } from '@nextui-org/react';
 
 //開啟菜單
 const open = {
     menu: " w-0 ",
-    Layout: "w-40 ",
+    Layout: " w-60 ",
     buttonList: " w-full",
 }
 //關閉菜單
 const close = {
     menu: "",
-    Layout: " w-20 ",
+    Layout: "",
     buttonList: " w-full",
 }
 
@@ -38,7 +30,8 @@ const buttonList_Defualt = ` flex flex-col justify-center p-2 `
 
 
 
-export default function LeftNav() {
+export default function LeftNav({ leftDistance }: { leftDistance: number }) {
+    close.Layout = ` w-${leftDistance} `
     const [menuIsOpen, setMenuIsOpen] = useState(false);
     const [menu, setMenu] = useState("");
     const [menu_Layout, setMenu_Layout] = useState(close.Layout);
@@ -80,6 +73,9 @@ export default function LeftNav() {
                     <LeftNavLink type="Link" status={menuIsOpen} payload="/Learn" text="學習">
                         <Image src={memoImg} width={30} height={30} alt="note.png"></Image>
                     </LeftNavLink>
+                    <NextButton size='sm' variant="shadow">123</NextButton>
+                    <NextButton size='md' variant="shadow">123</NextButton>
+                    <NextButton size='lg' variant="shadow" isLoading>123</NextButton>
                 </div>
             </div>
         </div>

@@ -13,7 +13,7 @@ const menuButton: string = `flex items-center  h-12 rounded
                 transition ease-in-out
                 hover:transition hover:ease-in-out hover:bg-slate-700`
 const linkStr = {
-    open: " w-20 ",
+    open: " w-36 ",
     close: " w-0 ",
 }
 
@@ -41,9 +41,9 @@ export default function LeftNav({ type, payload, status, text, children }: child
         case "Link":
             if (typeof payload !== "string") return;
             return (
-                <Link href={payload} className={menuButton + 'transition-[margin] justify-center mb-2 px-2'}>
-                    <div className={linkStrClass + ' overflow-hidden transition-[width] ease-in-out'}>
-                        <div className={'w-20'}>
+                <Link href={payload} className={menuButton + ' transition-[margin] justify-center mb-2 px-2 '}>
+                    <div className={linkStrClass + ' overflow-hidden transition-[width] ease-in-out '}>
+                        <div className='w-20'>
                             {text}
                         </div>
                     </div>
